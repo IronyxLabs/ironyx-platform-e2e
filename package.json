@@ -17,9 +17,16 @@
   },
   "license": "ISC",
   "author": "IronyxLabs",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cucumber-js --config cucumber.json"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^13.2.0",
+    "@types/assert": "^1.5.11",
+    "@types/node": "^26.1.1",
+    "assert": "^2.1.0",
+    "typescript": "^7.0.2"
   }
 }
