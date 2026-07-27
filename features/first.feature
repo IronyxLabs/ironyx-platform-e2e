@@ -6,3 +6,9 @@ Feature: Test Feature
     And Y = 1
     When Adding X and Y
     Then Result is 2
+
+  Scenario: [TSF-002]: Testing cucumber.js
+    Given X = 4
+    And Y = 1
+    When Adding X and Y
+    Then Result is 5
