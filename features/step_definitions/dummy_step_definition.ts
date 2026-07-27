@@ -5,18 +5,18 @@ let x = 0;
 let y = 0;
 let result = 0;
 
-Given('X = 1', () => {
-    x = 1;
+Given('X = {int}', (parameter: number) => {
+    x = parameter;
 })
 
-Given('Y = 1', () => {
-    y = 1;
+Given('Y = {int}', (parameter: number) => {
+    y = parameter;
 })
 
 When('Adding X and Y', () => {
     result = x + y;
 })
 
-Then('Result is 2', () => {
-    assert.strictEqual(result, 2);
+Then('Result is {int}', (expected: number) => {
+    assert.strictEqual(result, expected);
 }) 
