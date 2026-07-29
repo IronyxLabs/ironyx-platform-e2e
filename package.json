@@ -1,32 +1,42 @@
 {
   "name": "ironyx-platform-e2e",
   "version": "1.0.0",
-  "description": "E2E project for Ionyx Platform.",
-  "keywords": [
-    "e2e",
-    "ironyx",
-    "platform"
-  ],
-  "homepage": "https://github.com/IronyxLabs/ironyx-platform-e2e#readme",
-  "bugs": {
-    "url": "https://github.com/IronyxLabs/ironyx-platform-e2e/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/IronyxLabs/ironyx-platform-e2e.git"
-  },
-  "license": "ISC",
-  "author": "IronyxLabs",
-  "type": "module",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js --config cucumber.json"
+    "build": "tsc",
+    "test": "tsc && cucumber-js --require ./dist/features/step_definitions/"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.17.0",
+      "onFail": "download"
+    }
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 160
+  },
+  "type": "commonjs",
   "devDependencies": {
     "@cucumber/cucumber": "^13.2.0",
-    "@types/assert": "^1.5.11",
-    "@types/node": "^26.1.1",
-    "assert": "^2.1.0",
-    "typescript": "^7.0.2"
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.1.2",
+    "eslint": "^10.8.0",
+    "eslint-config-xo": "^0.58.1",
+    "globals": "^17.8.0",
+    "prettier": "^3.9.6",
+    "typescript": "6.0.3",
+    "typescript-eslint": "^8.65.0"
+  },
+  "dependencies": {
+    "@cucumber/language-server": "^1.7.0"
   }
 }
