@@ -1,0 +1,23 @@
+﻿syntax = "proto3";
+
+service GenericAPI {
+	rpc SendAsync (Envelop) returns (Reply);
+	rpc GetAsync (Envelop) returns (Reply);
+}
+
+message Envelop {
+	string type = 1;
+	string version = 2;
+	string payload = 3;
+}
+
+message Reply {
+	string status = 1;
+	string data = 2;
+	Error error = 3;
+}
+
+message Error {
+	string code = 1;
+	string message = 2;
+}
