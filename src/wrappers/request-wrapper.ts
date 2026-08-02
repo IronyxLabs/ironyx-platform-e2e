@@ -5,7 +5,7 @@ export class RequestWrapper {
         return {
             type: 'Ironyx.ServiceIndex.RegisterCommand',
             version: 'v1',
-            payload: JSON.stringify({ Name: name, Uri: uri, Types: [{ Type: type, Version: version }] }),
+            payload: JSON.stringify({ name: name, uri: uri, types: [{ type: type, version: version }] }),
         }
     }
 

@@ -14,7 +14,7 @@
       "ts-node/esm"
     ],
     "worldParameters": {
-      "serviceIndexUri": "http://localhost:57400"
+      "serviceIndexUri": "http://localhost:5900"
     }
   },
   "dev": {
@@ -32,7 +32,7 @@
       "ts-node/esm"
     ],
     "worldParameters": {
-      "serviceIndexUri": "http://localhost:57400"
+      "serviceIndexUri": "http://localhost:5900"
     }
   }
 }
