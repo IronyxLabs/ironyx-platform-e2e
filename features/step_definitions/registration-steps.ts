@@ -6,15 +6,20 @@ import { Registration } from '../../src/models/registration.js'
 let registrations: Registration[] = []
 
 Given('Service has been registered', async (table: DataTable) => {
-    var rows = table.rowsHash()
+    const rows = table.rowsHash()
 
-    await ServiceIndexDriver.registrateAsnyc(rows.name, rows.uri, rows.type, rows.version)
+    await ServiceIndexDriver.registrateAsnyc(rows.name, rows.uri, [{ type: rows.type, version: rows.version }])
 })
 
 When('Registrating service', async (table: DataTable) => {
-    var rows = table.rowsHash()
+    const rows = table.rowsHash()
 
-    await ServiceIndexDriver.registrateAsnyc(rows.name, rows.uri, rows.type, rows.version)
+    const types = [{ type: rows.type, version: rows.version }]
+  if (rows.new_version !== undefined)
+  {
+    types.push({ type: rows.type, version: rows.new_version })    
+  }
+  await ServiceIndexDriver.registrateAsnyc(rows.name, rows.uri, types)
 })
 
 Then('Service should be registered with name {string}', async (name: string) => {
@@ -31,7 +36,7 @@ Then('Service should be registered', async (table: DataTable) => {
         registrations = await ServiceIndexDriver.getAsync()
     }
 
-    var rows = table.rowsHash()
+    const rows = table.rowsHash()
     assert.equal(registrations.length, 1)
 
     assert.deepEqual(registrations[0].Name, rows.name)

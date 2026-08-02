@@ -12,14 +12,14 @@ export class ServiceIndexDriver {
         this._client = createClient(GenericAPI, createGrpcTransport({ baseUrl: baseUrl }))
     }
 
-    public static async registrateAsnyc(name: string, url: string, type: string, version: string): Promise<void> {
-        var reply = await this._client.sendAsync(RequestWrapper.WrapRegisterCommand(name, url, type, version))
+    public static async registrateAsnyc(name: string, url: string, types: { type: string; version: string }[]): Promise<void> {
+        const reply = await this._client.sendAsync(RequestWrapper.WrapRegisterCommand(name, url, types))
 
         assert.equal(reply.status, 'ACCEPTED')
     }
 
     public static async getAsync(): Promise<Registration[]> {
-        var reply = await this._client.getAsync(RequestWrapper.WrapGetRegistrationsQuery())
+        const reply = await this._client.getAsync(RequestWrapper.WrapGetRegistrationsQuery())
 
         assert.equal(reply.status, 'OK')
 

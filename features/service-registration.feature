@@ -10,14 +10,13 @@ Feature: [SERVICE_INDEX][SRV] - Service Registration
         | type    | Product.Create         |
         | version | v1                     |
       Then Service should be registered
-      | name    | Ironyx.Product         |
-      | uri     | http://ironyx.product/ |
-      | type    | Product.Create         |
-      | version | v1                     |
+        | name    | Ironyx.Product         |
+        | uri     | http://ironyx.product/ |
+        | type    | Product.Create         |
+        | version | v1                     |
 
-    @inprogress
     Scenario: [SRV/CTV-002]: Extend canonical type registration
-      Given Service has been registered 
+      Given Service has been registered
         | name    | Ironyx.Product         |
         | uri     | http://ironyx.product/ |
         | type    | Product.Create         |
@@ -33,14 +32,25 @@ Feature: [SERVICE_INDEX][SRV] - Service Registration
         | type    | Product.Create         |
         | version | v1                     |
 
-    @formulized
+    @inprogress
     Scenario: [SRV/CTV-003]: Extend version registration
-      Given Service has been registered with name <name>, canonical type <type>, version <version>
-      When Registrating service with name <name>, canonical type <type>, version <version>
-      Then Service should be registered with name <name>
-      And With canonical type <type>
-      And With version <version>
-      And With version <new_version>
+      Given Service has been registered
+        | name    | Ironyx.Product         |
+        | uri     | http://ironyx.product/ |
+        | type    | Product.Create         |
+        | version | v1                     |
+      When Registrating service
+        | name        | Ironyx.Product         |
+        | uri         | http://ironyx.product/ |
+        | type        | Product.Create         |
+        | version     | v1                     |
+        | new_version | v2                     |
+      Then Service should be registered
+        | name        | Ironyx.Product         |
+        | uri         | http://ironyx.product/ |
+        | type        | Product.Create         |
+        | version     | v1                     |
+        | new_version | v2                     |
 
       Examples:
         | name           | type           | version | new_version |
