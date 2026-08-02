@@ -1,0 +1,38 @@
+{
+  "default": {
+    "paths": [
+      "features/**/*.feature"
+    ],
+    "import": [
+      "features/**/*.ts",
+      "src/**/*.ts"
+    ],
+    "format": [
+      "progress"
+    ],
+    "loader": [
+      "ts-node/esm"
+    ],
+    "worldParameters": {
+      "serviceIndexUri": "http://localhost:57400"
+    }
+  },
+  "dev": {
+    "paths": [
+      "features/**/*.feature"
+    ],
+    "import": [
+      "features/**/*.ts",
+      "src/**/*.ts"
+    ],
+    "format": [
+      "progress"
+    ],
+    "loader": [
+      "ts-node/esm"
+    ],
+    "worldParameters": {
+      "serviceIndexUri": "http://localhost:57400"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 allowBuilds:
   '@bufbuild/buf': true
-  grpc-tools: set this to true or false
-  protobufjs: set this to true or false
+  grpc-tools: true
+  protobufjs: true
   tree-sitter: false
   tree-sitter-c-sharp: false
   tree-sitter-cli: false
@@ -13,3 +13,4 @@ allowBuilds:
   tree-sitter-ruby: false
   tree-sitter-rust: false
   tree-sitter-typescript: false
+  unrs-resolver: true

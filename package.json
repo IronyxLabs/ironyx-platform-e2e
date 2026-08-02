@@ -5,18 +5,12 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "tsc && cucumber-js --require ./dist/features/step_definitions/"
+    "test": "tsc && cucumber-js --config cucumber.json --profile dev --tags ~@formulized",
+    "test:dev": "tsc && cucumber-js --config cucumber.json --profile dev --tags @inprogress"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "^11.17.0",
-      "onFail": "download"
-    }
-  },
   "prettier": {
     "trailingComma": "es5",
     "tabWidth": 4,
@@ -24,7 +18,7 @@
     "singleQuote": true,
     "printWidth": 160
   },
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "@bufbuild/buf": "^1.72.0",
     "@bufbuild/protoc-gen-es": "^2.13.0",
@@ -36,6 +30,7 @@
     "eslint-config-xo": "^0.58.1",
     "globals": "^17.8.0",
     "prettier": "^3.9.6",
+    "ts-node": "^10.9.2",
     "typescript": "6.0.3",
     "typescript-eslint": "^8.65.0"
   },
