@@ -4,8 +4,9 @@ import { ServiceIndexDriver } from '../../src/drivers/service-index-driver.js'
 import { Registration } from '../../src/models/registration.js'
 import { Reply } from '../../src/generated/Generic_pb.js';
 
-let reply: Reply;
 let registrations: Registration[] = []
+let error: any;
+
 
 Given('Service has been registered', async (table: DataTable) => {
     const rows = table.rowsHash()
@@ -21,7 +22,11 @@ When('Registrating service', async (table: DataTable) => {
   {
     types.push({ type: rows.type, version: rows.new_version })
   }
-  reply = await ServiceIndexDriver.registrateAsnyc(rows.new_name ?? rows.name, rows.uri, types)
+  try {
+    await ServiceIndexDriver.registrateAsnyc(rows.new_name ?? rows.name, rows.uri, types)
+  } catch (e) {
+    error = e;
+  }
 })
 
 Then('Service should be registered with name {string}', async (name: string) => {
@@ -48,6 +53,7 @@ Then('Service should be registered', async (table: DataTable) => {
 })
 
 Then('Error should be occured: {string}', async (message: string) => {
+  assert.equal(error.rawMessage, message)
 })
 
 Then('Registration should be skipped', async () => {  
