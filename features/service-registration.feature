@@ -55,7 +55,6 @@ Feature: [SERVICE_INDEX][SRV] - Service Registration
         | name           | type           | version | new_version |
         | Ironyx.Product | Product.Create | v1      | v2          |
 
-    @formulized
     Scenario: [SRV/CTV-004]: Registering same canonical type and version to the different service
       Given Service has been registered
         | name    | Ironyx.Product         |

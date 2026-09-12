@@ -10,7 +10,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file Generic.proto.
  */
 export const file_Generic: GenFile = /*@__PURE__*/
-  fileDesc("Cg1HZW5lcmljLnByb3RvIjkKB0VudmVsb3ASDAoEdHlwZRgBIAEoCRIPCgd2ZXJzaW9uGAIgASgJEg8KB3BheWxvYWQYAyABKAkiPAoFUmVwbHkSDgoGc3RhdHVzGAEgASgJEgwKBGRhdGEYAiABKAkSFQoFZXJyb3IYAyABKAsyBi5FcnJvciImCgVFcnJvchIMCgRjb2RlGAEgASgJEg8KB21lc3NhZ2UYAiABKAkySQoKR2VuZXJpY0FQSRIdCglTZW5kQXN5bmMSCC5FbnZlbG9wGgYuUmVwbHkSHAoIR2V0QXN5bmMSCC5FbnZlbG9wGgYuUmVwbHliBnByb3RvMw");
+  fileDesc("Cg1HZW5lcmljLnByb3RvIjkKB0VudmVsb3ASDAoEdHlwZRgBIAEoCRIPCgd2ZXJzaW9uGAIgASgJEg8KB3BheWxvYWQYAyABKAkiFQoFUmVwbHkSDAoEZGF0YRgBIAEoCTJJCgpHZW5lcmljQVBJEh0KCVNlbmRBc3luYxIILkVudmVsb3AaBi5SZXBseRIcCghHZXRBc3luYxIILkVudmVsb3AaBi5SZXBseWIGcHJvdG8z");
 
 /**
  * @generated from message Envelop
@@ -44,19 +44,9 @@ export const EnvelopSchema: GenMessage<Envelop> = /*@__PURE__*/
  */
 export type Reply = Message<"Reply"> & {
   /**
-   * @generated from field: string status = 1;
-   */
-  status: string;
-
-  /**
-   * @generated from field: string data = 2;
+   * @generated from field: string data = 1;
    */
   data: string;
-
-  /**
-   * @generated from field: Error error = 3;
-   */
-  error?: Error | undefined;
 };
 
 /**
@@ -65,28 +55,6 @@ export type Reply = Message<"Reply"> & {
  */
 export const ReplySchema: GenMessage<Reply> = /*@__PURE__*/
   messageDesc(file_Generic, 1);
-
-/**
- * @generated from message Error
- */
-export type Error = Message<"Error"> & {
-  /**
-   * @generated from field: string code = 1;
-   */
-  code: string;
-
-  /**
-   * @generated from field: string message = 2;
-   */
-  message: string;
-};
-
-/**
- * Describes the message Error.
- * Use `create(ErrorSchema)` to create a new message.
- */
-export const ErrorSchema: GenMessage<Error> = /*@__PURE__*/
-  messageDesc(file_Generic, 2);
 
 /**
  * @generated from service GenericAPI

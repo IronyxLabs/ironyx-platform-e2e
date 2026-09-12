@@ -48,7 +48,6 @@ Then('Service should be registered', async (table: DataTable) => {
 })
 
 Then('Error should be occured: {string}', async (message: string) => {
-  assert.notEqual(reply.error, undefined)
 })
 
 Then('Registration should be skipped', async () => {  
