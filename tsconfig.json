@@ -1,22 +1,26 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
+    "target": "es2022",
     "module": "nodenext",
-    "target": "es2018",
-    "types": [],
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-    "strict": true,
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
     "moduleResolution": "nodenext",
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
+    "rootDir": ".",
+    "lib": [
+      "ES2022"
+    ],
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
-  }
+    "allowSyntheticDefaultImports": true,
+    "types": ["node"]
+  },
+  "include": [
+    "features/**/*.ts",
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
