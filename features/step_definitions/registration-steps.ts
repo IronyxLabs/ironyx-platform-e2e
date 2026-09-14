@@ -2,7 +2,7 @@ import { DataTable, Given, Then, When } from '@cucumber/cucumber'
 import { strict as assert } from 'node:assert'
 import { ServiceIndexDriver } from '../../src/drivers/service-index-driver.js'
 import { Registration } from '../../src/models/registration.js'
-import { Reply } from '../../src/generated/Generic_pb.js';
+import { faker } from '@faker-js/faker'
 
 let registrations: Registration[] = []
 let error: any;
@@ -12,6 +12,10 @@ Given('Service has been registered', async (table: DataTable) => {
     const rows = table.rowsHash()
 
     await ServiceIndexDriver.registrateAsnyc(rows.name, rows.uri, [{ type: rows.type, version: rows.version }])
+})
+
+Given('Service has been registered with name {string}', async (name: string) => {
+    await ServiceIndexDriver.registrateAsnyc(name, faker.internet.url(), [{ type: faker.lorem.word(), version: faker.system.semver() }])
 })
 
 When('Registrating service', async (table: DataTable) => {
@@ -27,6 +31,10 @@ When('Registrating service', async (table: DataTable) => {
   } catch (e) {
     error = e;
   }
+})
+
+When('Unregistrating service with name {string}', async (name: string) => {
+  await ServiceIndexDriver.unregistrateAsync(name);
 })
 
 Then('Service should be registered with name {string}', async (name: string) => {
@@ -62,4 +70,12 @@ Then('Registration should be skipped', async () => {
   }
   
   assert.equal(registrations.length, 1)
+})
+
+Then('Service should not be registered with name {string}', async (name: string) => {  
+  if (registrations.length == 0) {
+      registrations = await ServiceIndexDriver.getAsync()
+  }
+  
+  assert.equal(registrations.find(r => r.Name === name), undefined);
 })

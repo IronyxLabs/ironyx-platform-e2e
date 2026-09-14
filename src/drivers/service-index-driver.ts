@@ -11,14 +11,16 @@ export class ServiceIndexDriver {
         this._client = createClient(GenericAPI, createGrpcTransport({ baseUrl: baseUrl }))
     }
 
-    public static async registrateAsnyc(name: string, url: string, types: { type: string; version: string }[]): Promise<Reply> {
-        const reply = await this._client.sendAsync(RequestWrapper.WrapRegisterCommand(name, url, types))
-        
-        return reply
+    public static async registrateAsnyc(name: string, url: string, types: { type: string; version: string }[]): Promise<void> {
+        await this._client.sendAsync(RequestWrapper.WrapRegisterCommand(name, url, types))       
     }
 
     public static async getAsync(): Promise<Registration[]> {
       const reply = await this._client.getAsync(RequestWrapper.WrapGetRegistrationsQuery())
         return <Registration[]>JSON.parse(reply.data)
+  }
+
+    public static async unregistrateAsync(name: string): Promise<void> {
+        await this._client.sendAsync(RequestWrapper.WrapUnregisterCommand(name))
     }
 }

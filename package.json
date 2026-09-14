@@ -24,6 +24,7 @@
     "@connectrpc/protoc-gen-connect-es": "^1.7.0",
     "@cucumber/cucumber": "^13.2.0",
     "@eslint/js": "^10.0.1",
+    "@faker-js/faker": "^10.6.0",
     "@types/node": "^26.1.2",
     "eslint": "^10.8.0",
     "eslint-config-xo": "^0.58.1",
@@ -38,6 +39,7 @@
     "@connectrpc/connect": "^2.1.2",
     "@connectrpc/connect-node": "^2.1.2",
     "@cucumber/language-server": "^1.7.0",
-    "ts-proto": "^2.12.0"
+    "ts-proto": "^2.12.0",
+    "uuid": "^14.0.2"
   }
 }
