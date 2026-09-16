@@ -3,6 +3,7 @@ import { createGrpcTransport } from '@connectrpc/connect-node'
 import { GenericAPI } from '../generated/Generic_pb.js'
 import { Registration } from '../models/registration.js'
 import { RequestWrapper } from '../wrappers/request-wrapper.js'
+import { Configuration } from '../models/configuration.js'
 
 export class ServiceIndexDriver {
     private _client: any
@@ -22,5 +23,10 @@ export class ServiceIndexDriver {
 
     public async unregistrateAsync(name: string): Promise<void> {
         await this._client.sendAsync(RequestWrapper.WrapUnregisterCommand(name))
+  }
+
+    public async getConfigurationAsync(type: string, version: string): Promise<Configuration> {
+      const reply = await this._client.getAsync(RequestWrapper.WrapGetConfigurationQuery(type, version));
+      return <Configuration>JSON.parse(reply.data)
     }
 }

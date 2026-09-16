@@ -101,7 +101,6 @@ Feature: [SERVICE_INDEX][SRV] - Service Registration
       When Unregistrating service with name 'Ironyx.Develop'
       Then Service should not be registered with name 'Ironyx.Develop'
 
-    @formulized
     Scenario: [SRV/UNR-002] - Unregistrate not existing service
       When Unregistrating service with name 'Ironyx.Quality'
       Then Service should not be registered with name 'Ironyx.Quality'

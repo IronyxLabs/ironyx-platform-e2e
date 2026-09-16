@@ -26,5 +26,14 @@ export class RequestWrapper {
             version: 'v1',
             payload: JSON.stringify({ name: name }),
         }
+  }
+
+    public static WrapGetConfigurationQuery(type: string, version: string): Envelop {
+        return {
+            $typeName: 'Envelop',
+            type: 'Ironyx.ServiceIndex.GetConfigurationQuery',
+            version: 'v1',
+            payload: JSON.stringify({ type: type, version: version }),
+        }
     }
 }

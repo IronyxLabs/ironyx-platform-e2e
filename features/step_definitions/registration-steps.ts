@@ -3,9 +3,9 @@ import { faker } from '@faker-js/faker'
 import { strict as assert } from 'node:assert'
 import { Registration } from '../../src/models/registration.js'
 import { servicIndexDriver } from '../support/drivers.js'
+import { setError } from './error.steps.js'
 
 let registrations: Registration[] = []
-let error: any
 
 Given('Service has been registered', async (table: DataTable) => {
     const rows = table.rowsHash()
@@ -27,7 +27,7 @@ When('Registrating service', async (table: DataTable) => {
     try {
         await servicIndexDriver.registrateAsnyc(rows.new_name ?? rows.name, rows.uri, types)
     } catch (e) {
-        error = e
+      setError(e);
     }
 })
 
@@ -56,10 +56,6 @@ Then('Service should be registered', async (table: DataTable) => {
     assert.deepEqual(registrations[0].Uri, rows.uri)
     assert.deepEqual(registrations[0].Types[0].Type, rows.type)
     assert.deepEqual(registrations[0].Types[0].Version, rows.version)
-})
-
-Then('Error should be occured: {string}', async (message: string) => {
-    assert.equal(error.rawMessage, message)
 })
 
 Then('Registration should be skipped', async () => {
